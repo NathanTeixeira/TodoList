@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "gh-pages": "^5.0.0"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "homepage": "https://NathanTeixeira.github.io/TodoList"
+}
