@@ -2,8 +2,10 @@ const tbody = document.querySelector('tbody');
 const addForm = document.querySelector('.add-form');
 const inputTask = document.querySelector('.input-task');
 
+const baseUrl = "https://todo-list-zcmz.vercel.app"
+
 const fetchTasks = async () => {
-  const response = await fetch('https://todo-list-mu-neon.vercel.app/')
+  const response = await fetch(baseUrl)
   const tasks = await response.json()
   return tasks;
 }
@@ -13,7 +15,7 @@ const addTask = async (event) => {
 
   const task = { title: inputTask.value };
 
-  await fetch('https://todo-list-mu-neon.vercel.app/', {
+  await fetch(baseUrl, {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(task),
@@ -25,7 +27,7 @@ const addTask = async (event) => {
 }
 
 const deleteTask = async (id) => {
-  await fetch(`https://todo-list-mu-neon.vercel.app/${id}`, {
+  await fetch(`${baseUrl}/${id}`, {
     method: 'delete',
   });
 
@@ -34,7 +36,7 @@ const deleteTask = async (id) => {
 
 const updateTask = async ({ id, title, status }) => {
 
-  await fetch(`https://todo-list-mu-neon.vercel.app/${id}`, {
+  await fetch(`${baseUrl}/${id}`, {
     method: 'put',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ title, status }),
